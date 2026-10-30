@@ -35,4 +35,10 @@ jobs:
       - name: Bandit (security lint)
         run: python -m bandit -r hearth
       - name: pip-audit (known vulnerable dependencies)
+        id: audit
         run: python -m pip_audit --skip-editable
+      - name: Publish pip-audit's findings as an annotation
+        if: failure() && steps.audit.outcome == 'failure'
+        shell: bash
+        run: |
+          python -m pip_audit --skip-editable 2>&1 | tail -15 | python -c "import sys; print('::error title=pip-audit::' + sys.stdin.read().replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A'))"
