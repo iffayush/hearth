@@ -48,3 +48,6 @@ htmlcov/
 *.swp
 .DS_Store
 Thumbs.db
+
+# CI test output.
+test-results.xml
