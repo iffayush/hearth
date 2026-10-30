@@ -40,7 +40,7 @@ systemd's `StateDirectory=hearth` would create `/var/lib/hearth` on the first st
 **2. Python and Hearth, in a virtualenv under /opt/hearth.**
 ```bash
 sudo apt install -y python3 python3-venv git
-sudo git clone https://github.com/YOU/hearth /opt/hearth
+sudo git clone https://github.com/iffayush/hearth /opt/hearth
 sudo python3 -m venv /opt/hearth/.venv
 sudo /opt/hearth/.venv/bin/pip install /opt/hearth
 ```

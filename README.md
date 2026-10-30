@@ -8,6 +8,13 @@
   Every member runs the same small Python program, and all posts and photos are end-to-end encrypted.
 </p>
 
+<p align="center">
+  <a href="https://github.com/iffayush/hearth/actions/workflows/ci.yml"><img src="https://github.com/iffayush/hearth/actions/workflows/ci.yml/badge.svg" alt="CI status"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-orange" alt="MIT License"></a>
+  <img src="https://img.shields.io/badge/python-3.12%2B-orange" alt="Python 3.12 or newer">
+  <img src="https://img.shields.io/badge/status-development-red" alt="Status: development">
+</p>
+
 > [!WARNING]
 > **This is a development project, not a finished product.** It's a small build tested on a handful of machines, with a custom protocol nobody has audited. Don't trust it with anything you can't afford to lose or leak.
 >
@@ -111,7 +118,7 @@ Open both printed links. A post in one tab shows up in the other within about 5 
 You need an invite link from the group's owner, and a copy of this code. Then:
 
 ```
-git clone https://github.com/YOU/hearth && cd hearth
+git clone https://github.com/iffayush/hearth && cd hearth
 python -m venv .venv
 .venv\Scripts\activate                 (macOS/Linux: source .venv/bin/activate)
 pip install .

@@ -36,13 +36,12 @@ All 8 phases are built. What's left needs the owner's VM and networks (`docs/dep
 
 Then:
 - remove the first install from the host (the VM setup is in `docs/deploy.md`, "Path C in a VM of its own", since 2026-10-30);
-- the MVP checklist below, and pushing the repository so CI can run.
+- the MVP checklist below.
 
 ## Open items and known gaps
 
-- CI has never run on GitHub: the repository is local only (since 2026-10-30). Push it to get the workflow going. Meanwhile the same checks run locally on Linux in Docker (see below), and pass. macOS was added to the CI list but has never been run.
-- Outside pull requests are invited, but they need the repository to be public first.
-- The README and deploy guide still say `github.com/YOU/hearth`: fill in the real address when the repository is pushed.
+- The repository is public at github.com/iffayush/hearth since 2026-10-30. macOS was added to the CI list without ever having been run by hand. The same checks also run locally on Linux in Docker (see below).
+- Outside pull requests are invited. Security problems arrive that way too, so they are public from the moment a PR opens.
 - Phase 1's `debug verify FILE`, `--group` and `--out` were replaced in Phase 2 (see decisions.md).
 - Path C was tested with HAProxy standing in for Tailscale Funnel (same job: TLS on 443, PROXY v2 inside). Real Funnel has worked for a join and sync since 2026-10-30; its unpublished bandwidth limits are still untested with photos. If photos crawl, path B (WireGuard VPS) is the fallback.
 - The photo picker's previews were checked by tests of the upload API, not by hand in a browser: automation can't drive a native file chooser. Worth one manual try.
