@@ -1,0 +1,70 @@
+# Hearth's home node: the always-on member that relays posts, holds every
+# image and accepts invites. How to install it: docs/deploy.md.
+# Logs: sudo journalctl -u hearth-home
+#
+# Joke: systemd, the friend who picks you up after every bad night.
+
+[Unit]
+Description=Hearth home node (private P2P forum)
+Documentation=file:///opt/hearth/docs/deploy.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=hearth
+Group=hearth
+# systemd creates /var/lib/hearth for the hearth user if it's missing.
+# 0700, because the folder holds the key files and the control socket.
+StateDirectory=hearth
+StateDirectoryMode=0700
+# Everything the node writes (database, chunks, control socket) is private too.
+UMask=0077
+# Behind Tailscale Funnel (docs/deploy.md, path C), the listen part becomes
+# `--listen 127.0.0.1:7777 --proxy-protocol`.
+ExecStart=/opt/hearth/.venv/bin/python -m hearth run --headless --role home \
+    --listen 0.0.0.0:7777 --data-dir /var/lib/hearth --passphrase-file /etc/hearth/passphrase
+# A crash (or a wrong passphrase) is retried every 5 seconds; `systemctl stop` is not.
+Restart=on-failure
+RestartSec=5
+
+# The sandbox: the node needs its data folder, the network and nothing else.
+# No gaining privileges, ever (setuid binaries, file capabilities).
+NoNewPrivileges=yes
+# The whole filesystem is read-only, except /var/lib/hearth (StateDirectory).
+ProtectSystem=strict
+# /home, /root and /run/user look empty.
+ProtectHome=yes
+# A private /tmp nobody else can see.
+PrivateTmp=yes
+# No hardware devices; /dev/null and /dev/urandom stay.
+PrivateDevices=yes
+# IPv4 and IPv6 for friends, Unix sockets for the control channel. Nothing else.
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+# No memory that is both writable and executable (checked: Python and PyNaCl don't need it).
+MemoryDenyWriteExecute=yes
+# Empty: not one Linux capability, not even binding to ports below 1024.
+CapabilityBoundingSet=
+
+# More of the same, beyond the spec's list (tested on Ubuntu 24.04; see docs/deploy.md).
+# Hands off the kernel: its settings, modules, logs, clock, hostname and cgroups.
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectControlGroups=yes
+# In /proc, only our own processes are visible.
+ProtectProc=invisible
+ProcSubset=pid
+# No containers-within, real-time scheduling, setuid files or odd execution modes.
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+# Only the system calls an ordinary network service uses.
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+
+[Install]
+WantedBy=multi-user.target

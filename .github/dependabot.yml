@@ -1,0 +1,11 @@
+version: 2
+updates:
+  # Dependencies are pinned in pyproject.toml, so updates only arrive as reviewable PRs.
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: weekly
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly

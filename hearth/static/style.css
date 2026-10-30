@@ -1,0 +1,148 @@
+/* Hearth's look: warm, quiet, readable. Plain CSS, light and dark. */
+
+:root {
+  --bg: #faf6f1;
+  --card: #ffffff;
+  --text: #2b2420;
+  --muted: #7a6e66;
+  --line: #ece4dc;
+  --accent: #c8553d;
+  --accent-text: #ffffff;
+  --online: #2f7d4f;
+  --offline: #8a7f78;
+  --warn-bg: #fff3d6;
+  --warn-text: #6b4e00;
+  --radius: 14px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c1816;
+    --card: #26211e;
+    --text: #f1e9e2;
+    --muted: #a99d94;
+    --line: #3a332e;
+    --accent: #e0765c;
+    --accent-text: #1c1816;
+    --online: #6cc490;
+    --offline: #9a8f87;
+    --warn-bg: #3d3115;
+    --warn-text: #f3d68c;
+  }
+}
+
+* { box-sizing: border-box; }
+
+/* `hidden` must win over any display rule below (e.g. the block-level "Older posts" button). */
+[hidden] { display: none !important; }
+
+body {
+  margin: 0 auto;
+  max-width: 640px;
+  padding: 0 16px 48px;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+button, input, textarea { font: inherit; color: inherit; }
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 18px;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.6; cursor: progress; }
+button.ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+button.wide { display: block; width: 100%; margin-top: 12px; }
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 0 12px;
+}
+.brand { flex: 1; margin: 0; font-size: 1.5rem; letter-spacing: 0.02em; white-space: nowrap; }
+.flame::before { content: "\1F525"; margin-right: 6px; }
+
+.pill {
+  font-size: 0.8rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+}
+.pill-online { color: var(--online); }
+.pill-home { color: var(--accent); }
+.pill-offline { color: var(--offline); }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin: 12px 0;
+}
+
+.notice, .banner {
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  margin: 8px 0;
+  background: var(--warn-bg);
+  color: var(--warn-text);
+}
+
+.settings label { display: block; font-weight: 600; margin-bottom: 6px; }
+.row { display: flex; gap: 8px; }
+.row input { flex: 1; min-width: 0; }
+
+input, textarea {
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+
+.compose textarea { width: 100%; resize: vertical; min-height: 4.5em; }
+.compose-actions { display: flex; align-items: center; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+.compose-actions button { margin-left: auto; }
+.file-label { cursor: pointer; color: var(--accent); font-weight: 600; }
+.file-label input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+
+.previews { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.preview { width: 88px; height: 88px; object-fit: cover; border-radius: 10px; }
+
+.post-head { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
+.author { font-weight: 700; }
+.when { color: var(--muted); font-size: 0.85rem; }
+.text { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.unreadable { margin: 0; color: var(--muted); font-style: italic; }
+.waiting-post { border-style: dashed; }
+.badge { margin: 0 0 6px; font-size: 0.85rem; color: var(--muted); }
+
+.gallery { display: grid; gap: 6px; margin-top: 10px; grid-template-columns: 1fr 1fr; }
+.gallery.count-1 { grid-template-columns: 1fr; }
+.photo { width: 100%; border-radius: 10px; background: var(--line); min-height: 120px; object-fit: cover; }
+.photo.loading { animation: glow 1.4s ease-in-out infinite; }
+.photo.broken { min-height: 0; padding: 12px; font-size: 0.85rem; color: var(--muted); }
+
+@keyframes glow { 50% { opacity: 0.55; } }
+
+.muted { color: var(--muted); }
+.small { font-size: 0.85rem; }
+.center { text-align: center; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+
+/* Phones: the status pill drops to its own line under the title and Settings. */
+@media (max-width: 480px) {
+  .top { flex-wrap: wrap; row-gap: 6px; }
+  .pill { order: 3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo.loading { animation: none; }
+}

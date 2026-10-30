@@ -1,0 +1,50 @@
+# --- Secrets and personal data: never commit these ---------------------------
+# Passphrases, key files and backups belong in a password manager or on the VM.
+passphrase*
+*.passphrase
+*.key
+*.pem
+!tests/data/front-door-test.pem
+control.token
+control.sock
+.env
+.env.*
+
+# A node's data directory, if someone points --data-dir inside the repo.
+.hearth/
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+hearth.lock
+chunks/
+
+# Backups and hand-made archives of the project.
+*.tar
+*.tgz
+*.tar.gz
+*.zip
+
+# --- Python ------------------------------------------------------------------
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# --- Tools -------------------------------------------------------------------
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# --- Editors and operating systems -------------------------------------------
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

@@ -1,0 +1,18 @@
+# Git stores text with LF line endings, whatever the machine uses.
+* text=auto
+
+# These run or are read on Linux: a CRLF would break them there.
+*.py text eol=lf
+*.service text eol=lf
+*.sh text eol=lf
+*.yml text eol=lf
+*.toml text eol=lf
+
+# Test images and archives are bytes, not text.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.tar binary
+*.tgz binary

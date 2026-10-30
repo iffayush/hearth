@@ -1,0 +1,57 @@
+<!doctype html>
+<!-- Hearth's only page. No inline scripts or styles: the Content-Security-Policy
+     only allows files from this node, so everything lives in app.js and style.css. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hearth</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <h1 class="brand"><span class="flame" aria-hidden="true"></span>Hearth</h1>
+    <span id="status-pill" class="pill pill-offline" role="status">connecting…</span>
+    <button id="settings-toggle" class="ghost" type="button" aria-expanded="false" aria-controls="settings">Settings</button>
+  </header>
+
+  <div id="notice" class="notice" role="alert" hidden></div>
+  <div id="fork-banner" class="banner" role="alert" hidden></div>
+
+  <section id="settings" class="card settings" hidden>
+    <form id="profile-form">
+      <label for="name-input">Your display name</label>
+      <div class="row">
+        <input id="name-input" name="name" maxlength="64" autocomplete="off" required>
+        <button type="submit">Save</button>
+      </div>
+    </form>
+    <p id="me-line" class="muted small"></p>
+  </section>
+
+  <main>
+    <section class="card compose" aria-label="Write a post">
+      <form id="compose-form">
+        <label for="compose-text" class="visually-hidden">Post text</label>
+        <textarea id="compose-text" maxlength="10000" rows="3" placeholder="What's warming you up today?"></textarea>
+        <div id="previews" class="previews"></div>
+        <div class="compose-actions">
+          <label class="file-label">Add photos
+            <input id="compose-images" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple>
+          </label>
+          <span id="compose-hint" class="muted small"></span>
+          <button id="compose-submit" type="submit">Post</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="waiting" class="waiting" aria-label="Posts waiting to upload"></section>
+    <section id="feed" class="feed" aria-label="Posts" aria-live="polite"></section>
+    <p id="empty" class="muted center" hidden>No posts yet. The fire's lit, but nobody's said anything.</p>
+    <button id="load-more" class="ghost wide" type="button" hidden>Older posts</button>
+  </main>
+
+  <footer class="muted small center">End-to-end encrypted. It lives on your friends' devices, not a company's.</footer>
+</body>
+</html>
