@@ -8,6 +8,7 @@ version = "0.1.0"
 description = "A private, invite-only P2P forum replicated across its members' own devices."
 readme = "README.md"
 requires-python = ">=3.12"
+license = {text = "MIT"}
 authors = [{name = "Ayush"}]
 keywords = ["p2p", "forum", "end-to-end-encryption", "self-hosted", "libsodium"]
 classifiers = [
@@ -15,12 +16,11 @@ classifiers = [
     "Environment :: Console",
     "Environment :: Web Environment",
     "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.12",
     "Topic :: Communications",
-    # No license has been chosen yet, so PyPI must refuse an accidental upload.
-    "Private :: Do Not Upload",
 ]
 dependencies = [
     "pynacl==1.6.2",

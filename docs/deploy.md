@@ -1,5 +1,7 @@
 # Deploying the home node
 
+> Hearth is a development project with an unaudited protocol. Run it for people who understand that, and if you find something wrong, [open a PR](../CONTRIBUTING.md).
+
 The home node is the member that never sleeps. It holds every post and image, relays between friends who are never online at the same time, and is the only node that accepts invites. It runs on your on-prem Linux VM as a locked-down systemd service, listening on TCP port 7777.
 
 You need:

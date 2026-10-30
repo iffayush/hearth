@@ -4,7 +4,7 @@ about: Something in Hearth doesn't work as documented
 labels: bug
 ---
 
-> **Security problem?** Don't open an issue: see `SECURITY.md`.
+> **Can you fix it?** A pull request beats an issue, security problems included: see `SECURITY.md`.
 >
 > **Before pasting anything:** remove passphrases, invite links, tokens from the web UI's address, and any addresses you'd rather keep private.
 

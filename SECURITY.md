@@ -1,16 +1,16 @@
 # Security
 
-Hearth uses well-established primitives from libsodium, through PyNaCl. How it combines them is custom, and **has not been independently audited**. The tests show the code behaves as intended in the scenarios they cover. They don't prove the protocol is secure.
+**Hearth is a development project.** It uses well-established primitives from libsodium, through PyNaCl, but how it combines them is custom and **has not been independently audited**. The tests show the code behaves as intended in the scenarios they cover. They don't prove the protocol is secure. Assume there are holes, and don't use it for anything where a leak would really hurt.
 
-## Reporting a vulnerability
+## Found a vulnerability? Open a PR
 
-Please **don't open a public issue**. Contact the repository owner privately, with:
+This project takes security fixes as ordinary pull requests. If you've found a hole or know a better design, do the work and send it:
 
+- the fix, with a test that fails without it;
 - what the problem is, and what an attacker could do with it;
-- steps to reproduce, ideally against a throwaway group;
-- the version or commit.
+- anything people running a group should do about it.
 
-Never send real passphrases, key files, invite links or backups, even in a report.
+If you can't fix it yourself, a PR with just the failing test still proves the problem and is very welcome. Never include real passphrases, key files, invite links or backups.
 
 Only the latest commit on `main` is supported. There are no maintained older releases.
 

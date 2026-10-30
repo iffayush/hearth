@@ -9,6 +9,8 @@ Notable changes to Hearth. The format follows [Keep a Changelog](https://keepach
 - Project documentation: a detailed README, `docs/architecture.md`, `SECURITY.md`, `CONTRIBUTING.md` and this changelog.
 - Repository setup: `.gitignore` rules for secrets and backups, `.gitattributes`, Dependabot, and issue and pull request templates.
 - CI now also runs on macOS, and only on pushes to `main` and on pull requests.
+- The Hearth banner and logo in `drawables/`, used in the README, and a 1280x640 image for GitHub's social preview.
+- The MIT License for the code and documentation. The artwork in `drawables/` isn't covered.
 
 ### Changed
 
@@ -16,6 +18,7 @@ Notable changes to Hearth. The format follows [Keep a Changelog](https://keepach
 - An invite whose address is a web server, or needs `tls://`, now says so and asks for a corrected link.
 - `debug log` with no group now names `create-group` and `join`.
 - The build specification moved to `docs/spec.md`.
+- The docs now say plainly that this is a development project, and invite protocol improvements and security fixes as pull requests.
 
 ## [0.1.0] - 2026-10-29
 

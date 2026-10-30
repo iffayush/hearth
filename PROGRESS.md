@@ -41,7 +41,7 @@ Then:
 ## Open items and known gaps
 
 - CI has never run on GitHub: the repository is local only (since 2026-10-30). Push it to get the workflow going. Meanwhile the same checks run locally on Linux in Docker (see below), and pass. macOS was added to the CI list but has never been run.
-- No license has been chosen, so nobody else may legally use the code yet. `pyproject.toml` blocks PyPI uploads until one is.
+- Outside pull requests are invited, but they need the repository to be public first.
 - The README and deploy guide still say `github.com/YOU/hearth`: fill in the real address when the repository is pushed.
 - Phase 1's `debug verify FILE`, `--group` and `--out` were replaced in Phase 2 (see decisions.md).
 - Path C was tested with HAProxy standing in for Tailscale Funnel (same job: TLS on 443, PROXY v2 inside). Real Funnel has worked for a join and sync since 2026-10-30; its unpublished bandwidth limits are still untested with photos. If photos crawl, path B (WireGuard VPS) is the fallback.

@@ -2,6 +2,8 @@
 
 How Hearth fits together. [`spec.md`](spec.md) is the original build specification, and [`decisions.md`](decisions.md) records where the build resolved or departed from it. If they disagree with this page, the code and `decisions.md` win.
 
+This is a development project's design, not a reviewed standard. If you can see a better way to do any of it, or a way to break it, [open a PR](../CONTRIBUTING.md#proposing-a-better-protocol).
+
 ## The big picture
 
 Hearth is a set of **per-member, append-only logs**. Every action a member takes (joining, setting a name, posting) is a signed entry in their own log. There's no shared database and no server-side logic: each node collects logs and merges them into a feed locally.

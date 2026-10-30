@@ -1,10 +1,21 @@
-# Hearth
+<p align="center">
+  <img src="drawables/banner.png" alt="Hearth" width="100%">
+</p>
 
-**A private, invite-only forum that lives on its members' own devices.** No company, no public website, no accounts on anyone else's server. Every member runs the same small Python program, and all posts and photos are end-to-end encrypted.
+<p align="center">
+  <strong>A private, invite-only forum that lives on its members' own devices.</strong><br>
+  No company, no public website, no accounts on anyone else's server.<br>
+  Every member runs the same small Python program, and all posts and photos are end-to-end encrypted.
+</p>
+
+> [!WARNING]
+> **This is a development project, not a finished product.** It's a small build tested on a handful of machines, with a custom protocol nobody has audited. Don't trust it with anything you can't afford to lose or leak.
+>
+> **Think the protocol could be better? Found a way to break it? Don't just say so: open a PR.** See [Think you can do better?](#think-you-can-do-better)
 
 | | |
 | --- | --- |
-| **Status** | Version 0.1.0, pre-release. All 8 build phases are complete, and a home node has run on a real VM. Some real-network checks are still open: see [`PROGRESS.md`](PROGRESS.md). |
+| **Status** | Version 0.1.0, a development project. All 8 build phases are complete, and a home node has run on a real VM. Some real-network checks are still open: see [`PROGRESS.md`](PROGRESS.md). |
 | **Scale** | 5 to 50 people who trust each other |
 | **Runs on** | Python 3.12+. Tested on Linux and Windows. macOS is listed in CI but has never been run. |
 | **Security** | Built on libsodium, but the protocol is custom and has **not** been independently audited. Read [`SECURITY.md`](SECURITY.md) before relying on it. |
@@ -21,6 +32,7 @@
 - [Documentation](#documentation)
 - [Project layout](#project-layout)
 - [Development](#development)
+- [Think you can do better?](#think-you-can-do-better)
 - [Not built yet](#not-built-yet)
 - [License](#license)
 
@@ -231,10 +243,28 @@ python -m pip_audit --skip-editable
 
 CI runs the same checks on Linux, Windows and macOS. Some tests are POSIX-only, so Windows skips a few. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the code rules.
 
+## Think you can do better?
+
+Good. Hearth is a development project, and it's here to be picked apart. If you can see a better design or a hole in this one, do the work and open a pull request:
+
+- **Found a vulnerability?** Send the fix, with a test that fails without it.
+- **Know a better protocol?** Send the change and its tests, and explain what it improves and what happens to existing data. Start with [`docs/architecture.md`](docs/architecture.md) for how it works and [`docs/decisions.md`](docs/decisions.md) for why it works that way.
+- **Want something else to do?** Pick anything from [Not built yet](#not-built-yet), or fix something in [`PROGRESS.md`](PROGRESS.md)'s open items.
+
+"This looks insecure" with no code doesn't help much. A PR that proves it does. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for how to get set up.
+
 ## Not built yet
 
 Designed for, but outside the first version: removing members and rotating the key, editing or deleting posts, changing a passphrase, comments, video, direct member-to-member connections, NAT hole punching, Android, Tor, more than one group per node, and storage cleanup.
 
 ## License
 
-No license has been chosen yet, so all rights are reserved by default. Nobody else has permission to use, copy or redistribute this code until one is added.
+The code and documentation are under the [MIT License](LICENSE). It comes with no warranty, which matters for a development project with an unaudited protocol.
+
+The Hearth logo and banner in `drawables/` aren't covered by it: all rights to them are reserved.
+
+<p align="center">
+  <br>
+  <img src="drawables/logo.png" alt="" width="64"><br>
+  <sub>Warm hands, cold keys.</sub>
+</p>

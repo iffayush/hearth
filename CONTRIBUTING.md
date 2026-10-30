@@ -1,6 +1,18 @@
 # Contributing to Hearth
 
-Hearth's guiding principle is **readability beats cleverness**. Anyone with intermediate Python should be able to understand every line. At 5 to 50 members, performance is never a reason to make code harder to read.
+Hearth is a development project, and pull requests are how it gets better. If you think the protocol is wrong, or you've found a way to break it, don't just say so: **show it in a PR**. A working change with a test beats any amount of discussion, and security fixes are welcome here too (see [`SECURITY.md`](SECURITY.md)).
+
+Its guiding principle is **readability beats cleverness**. Anyone with intermediate Python should be able to understand every line. At 5 to 50 members, performance is never a reason to make code harder to read.
+
+## Proposing a better protocol
+
+The protocol isn't sacred, so changing it is fair game. In your PR:
+
+- say what it improves, and what attack or problem it addresses;
+- keep to PyNaCl's primitives, and don't hand-roll a cipher;
+- change the protocol version or the format's version when old nodes can't understand the new one;
+- say plainly what happens to existing groups and their data;
+- update [`docs/architecture.md`](docs/architecture.md), and add your reasoning to [`docs/decisions.md`](docs/decisions.md).
 
 ## Setup
 
@@ -75,6 +87,8 @@ Python 3.12 matters: it's the oldest supported version and what Ubuntu 24.04 shi
 - A change to a stored format or the wire protocol must say so plainly, including what happens to existing data.
 
 ## Commits and pull requests
+
+- By opening a pull request, you agree your contribution is licensed under the project's [MIT License](LICENSE).
 
 - Keep each commit to one change, with a subject line in the imperative that says what it does.
 - Work on a branch and open a pull request against `main`. The template lists what's needed.
