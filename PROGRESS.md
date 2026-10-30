@@ -40,7 +40,7 @@ Then:
 
 ## Open items and known gaps
 
-- The repository is public at github.com/iffayush/hearth since 2026-10-30. macOS was added to the CI list without ever having been run by hand. The same checks also run locally on Linux in Docker (see below).
+- The repository is public at github.com/iffayush/hearth since 2026-10-30. macOS only has CI's automated tests behind it; nobody has run a real node on a Mac. The same checks also run locally on Linux in Docker (see below).
 - Outside pull requests are invited. Security problems arrive that way too, so they are public from the moment a PR opens.
 - Phase 1's `debug verify FILE`, `--group` and `--out` were replaced in Phase 2 (see decisions.md).
 - Path C was tested with HAProxy standing in for Tailscale Funnel (same job: TLS on 443, PROXY v2 inside). Real Funnel has worked for a join and sync since 2026-10-30; its unpublished bandwidth limits are still untested with photos. If photos crawl, path B (WireGuard VPS) is the fallback.

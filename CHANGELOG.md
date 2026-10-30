@@ -12,6 +12,10 @@ Notable changes to Hearth. The format follows [Keep a Changelog](https://keepach
 - The Hearth banner and logo in `drawables/`, used in the README, and a 1280x640 image for GitHub's social preview.
 - The MIT License for the code and documentation. The artwork in `drawables/` isn't covered.
 
+### Fixed
+
+- A `--data-dir` too long for the OS's Unix socket limit now gives a clear error instead of a traceback. macOS's limit is 104 bytes.
+
 ### Changed
 
 - A connection that starts with HTTP or TLS is now named. Web crawlers log one INFO line instead of a `Frame too big` warning.

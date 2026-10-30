@@ -24,7 +24,7 @@
 | --- | --- |
 | **Status** | Version 0.1.0, a development project. All 8 build phases are complete, and a home node has run on a real VM. Some real-network checks are still open: see [`PROGRESS.md`](PROGRESS.md). |
 | **Scale** | 5 to 50 people who trust each other |
-| **Runs on** | Python 3.12+. Tested on Linux and Windows. macOS is listed in CI but has never been run. |
+| **Runs on** | Python 3.12+. CI tests Linux, Windows and macOS. Real use so far has been on Linux and Windows only. |
 | **Security** | Built on libsodium, but the protocol is custom and has **not** been independently audited. Read [`SECURITY.md`](SECURITY.md) before relying on it. |
 
 ## Contents
