@@ -23,7 +23,7 @@ Tested in Ubuntu 24.04 containers: every `deploy.md` step as written, a reboot, 
 ```
 python -m pytest
 ```
-Expect `508 passed, 4 skipped` (Windows; the skips are POSIX-only) or `512 passed` (Linux, as root).
+Expect `508 passed, 5 skipped` (Windows; the skips are POSIX-only) or `513 passed` (Linux, as root).
 
 A home node behind a pretend front door, on port 7788 so it can't clash with a home node you already run:
 ```

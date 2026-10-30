@@ -14,7 +14,7 @@ Detail lives in `docs/phase-N.md`; every resolved ambiguity is in `docs/decision
 | 5 | Group encryption and images | ✅ Done 2026-10-26 | Windows 338 passed, 2 skipped · Linux/3.12 340 passed | [phase-5](docs/phase-5.md) |
 | 6 | Membership and invites | ✅ Done 2026-10-26 | Windows 389 passed, 2 skipped · Linux/3.12 391 passed | [phase-6](docs/phase-6.md) |
 | 7 | Web UI | ✅ Done 2026-10-27 | Windows 439 passed, 2 skipped · Linux/3.12 441 passed | [phase-7](docs/phase-7.md) |
-| 8 | Home node and real network | ✅ Built 2026-10-29; real-VM checks are the owner's | Windows 508 passed, 4 skipped · Linux/3.12 512 passed (2026-10-30) | [phase-8](docs/phase-8.md) |
+| 8 | Home node and real network | ✅ Built 2026-10-29; real-VM checks are the owner's | Windows 508 passed, 5 skipped · Linux/3.12 513 passed · CI green on Linux, Windows and macOS (2026-10-30) | [phase-8](docs/phase-8.md) |
 
 ## Moved between phases
 
@@ -93,7 +93,7 @@ When a phase changes stored formats, old test data directories must be deleted (
 ## MVP definition of done
 
 - [x] All tests pass; no test uses `time.sleep` for synchronisation
-- [ ] CI green: `pytest`, `bandit`, `pip-audit` clean or findings justified
+- [x] CI green: `pytest`, `bandit`, `pip-audit` clean (2026-10-30, on Linux, Windows and macOS)
 - [x] Home node running on the VM under systemd, surviving a reboot (2026-10-30: a Multipass VM, its host rebooted; owner-reported)
 - [ ] Two laptops on different networks sync posts with images through it
 - [x] A friend joins with only an invite link and sees full history (tests and containers; again on real networks)
