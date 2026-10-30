@@ -26,6 +26,8 @@ Joke: conftest.py is where fixtures go to be shared, like snacks at a LAN party.
 import asyncio
 import os
 import base64
+import sys
+import tempfile
 import time
 from collections.abc import AsyncIterator, Awaitable, Callable
 from pathlib import Path
@@ -54,6 +56,12 @@ FAST_TIMEOUTS: dict[str, float] = {
 }
 
 NodeFactory = Callable[..., Awaitable[Node]]
+
+
+def pytest_configure(config: pytest.Config) -> None:
+    """macOS's temp folder is deep enough to push control.sock past its 104-byte socket path limit."""
+    if sys.platform == "darwin" and config.option.basetemp is None:
+        config.option.basetemp = tempfile.mkdtemp(prefix="hearth-", dir="/tmp")
 
 
 @pytest.fixture

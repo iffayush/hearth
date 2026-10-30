@@ -38,6 +38,8 @@ logger = logging.getLogger(__name__)
 ControlHandler = Callable[[dict[str, Any]], Awaitable[dict[str, Any]]]
 # The token file is tiny; refuse to read anything bigger.
 MAX_TOKEN_FILE_BYTES = 1024
+# The OS's limit on a Unix socket's path: 104 bytes on macOS, 108 on Linux.
+MAX_SOCKET_PATH_BYTES = 104
 
 
 class ControlError(Exception):
@@ -77,7 +79,16 @@ async def start_control_server(
         socket_path = data_dir / config.CONTROL_SOCKET_FILE
         # We hold the data-dir lock, so a leftover socket file is from a crashed run.
         socket_path.unlink(missing_ok=True)
-        server = await asyncio.start_unix_server(serve, path=str(socket_path), limit=config.MAX_CONTROL_REQUEST_BYTES)
+        try:
+            server = await asyncio.start_unix_server(
+                serve, path=str(socket_path), limit=config.MAX_CONTROL_REQUEST_BYTES
+            )
+        except OSError as error:
+            if len(os.fsencode(socket_path)) < MAX_SOCKET_PATH_BYTES:
+                raise
+            raise ControlError(
+                f"{data_dir} is too long a path for this OS's control socket; use a shorter --data-dir"
+            ) from error
         os.chmod(socket_path, 0o600)
     else:
         server = await asyncio.start_server(

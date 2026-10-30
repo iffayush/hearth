@@ -204,4 +204,6 @@ async def test_a_wrong_address_is_a_warning_for_the_one_who_dialled_it(
     peer = await carol.join(link_to(port), lambda key: None)
     await eventually(lambda: peer.state == CLOSED)
     assert peer.not_hearth
+    # The state changes first; the line is logged once the socket has finished closing.
+    await eventually(lambda: peer_records(caplog))
     assert [record.levelno for record in peer_records(caplog)] == [logging.WARNING]

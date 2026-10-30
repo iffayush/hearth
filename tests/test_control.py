@@ -93,6 +93,12 @@ async def test_one_shot_against_a_running_node_never_opens_the_database(
     assert node.store.get_entry(node.identity.pubkey, 2) is not None
 
 
+@pytest.mark.skipif(not control.uses_unix_socket(), reason="only Unix sockets have a path limit")
+async def test_a_data_dir_too_long_for_the_socket_says_what_to_do(make_node: NodeFactory) -> None:
+    with pytest.raises(control.ControlError, match="use a shorter --data-dir"):
+        await make_node("x" * 120, control=True)
+
+
 async def test_held_lock_without_control_channel_is_explained(make_node: NodeFactory) -> None:
     node = await make_node("alice")  # no control channel
     with DataDirLock(node.data_dir):
